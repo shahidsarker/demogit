@@ -1,8 +1,15 @@
+# frozen_string_literal: true
+
 require 'sinatra/activerecord'
 require 'sinatra'
 require './models'
 
-set :database, adapter: 'sqlite3', database: 'doggly.sqlite3'
+# set :database, adapter: 'sqlite3', database: 'doggly.sqlite3'
+set :database, { adapter: 'postgresql', 
+                 database: 'doggly',
+                 username: 'postgres',
+                 password: ENV['POSTGRES_PW']
+                }
 enable :sessions
 
 get '/' do
