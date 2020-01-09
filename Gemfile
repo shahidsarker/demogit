@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 gem 'pg'
-gem 'sqlite3'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-activerecord'
