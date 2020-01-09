@@ -2,11 +2,18 @@ require 'sinatra/activerecord'
 require 'sinatra'
 require './models'
 
-# set :database, adapter: 'sqlite3', database: 'doggly.sqlite3'
-set :database, adapter: 'postgresql',
+configure :development do
+  set :database, adapter: 'postgresql',
                database: 'doggly',
                username: 'postgres',
                password: ENV['POSTGRES_PW']
+end
+
+configure :production do
+  set :database, {url: ENV['DATABASE_URL']}
+end
+
+
 enable :sessions
 
 get '/' do
